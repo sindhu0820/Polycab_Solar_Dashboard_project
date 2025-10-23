@@ -175,3 +175,4 @@ def step_impl(context):
 
     for year in expected_years:
         assert year in actual_years, f"Year {year} not found in visible tiles"
+        context.driver.quit()

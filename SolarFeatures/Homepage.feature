@@ -51,7 +51,7 @@ Feature:HomePage
      When  I login to solar app
      Then By adding the Online, Offline and Incomplete Inverters should be equal to Total Inverters
 
-   @home-year
+   @home-home
    Scenario: Verifying the select year
      Given Navigate to login page
      When  I login to solar app
