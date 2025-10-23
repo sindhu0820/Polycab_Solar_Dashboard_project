@@ -7,9 +7,10 @@ from selenium.webdriver.support import expected_conditions as EC
 
 @given(u'I have navigted to login page')
 def step_impl(context):
-    context.driver=webdriver.Firefox()
-    context.driver.maximize_window()
-    context.driver.get("http://solar.silvan.co.in/polycabsolar/#/auth-user/login")
+    # context.driver=webdriver.Firefox()
+    # context.driver.maximize_window()
+    # context.driver.get("http://solar.silvan.co.in/polycabsolar/#/auth-user/login")
+    pass
 
 
 @when(u'I entered valid email address and password into the valid fiels')
@@ -35,7 +36,7 @@ def step_impl(context):
      display_context="Solar Monitoring Dashboard"
      visible_text=WebDriverWait(context.driver,10)
      assert visible_text.until(EC.visibility_of_element_located((By.ID,"dhead"))).text.__eq__(display_context)
-     context.driver.quit()
+     # context.driver.quit()
 
 @when(u'I have entered invalid email address and valid password into the fiels')
 def step_impl(context):
@@ -53,7 +54,7 @@ def step_impl(context):
             EC.presence_of_element_located((By.XPATH, "//div[@class='content-container']/span"))
         )
     assert warning.text == expected_text
-    context.driver.quit()
+    # context.driver.quit()
 
 
 @when(u'I have entered valid email address and invalid password into the fiels')
@@ -85,4 +86,4 @@ def step_impl(context):
             EC.presence_of_element_located((By.XPATH, "//div[@class='content-container']/span"))
         )
     assert warning.text == expected_text
-    context.driver.quit()
+    # context.driver.quit()

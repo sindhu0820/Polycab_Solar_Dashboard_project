@@ -19,9 +19,9 @@ logging.basicConfig(level=logging.INFO)
 logging.info("✅ Logging works too!")
 @given(u'I login to solar app')
 def step_impl(context):
-    context.driver = webdriver.Firefox()
-    context.driver.maximize_window()
-    context.driver.get("http://solar.silvan.co.in/polycabsolar/#/auth-user/lurlogin")
+    # context.driver = webdriver.Firefox()
+    # context.driver.maximize_window()
+    # context.driver.get("http://solar.silvan.co.in/polycabsolar/#/auth-user/lurlogin")
     context.driver.find_element(By.XPATH, "//div[text()='Admin']").click()
     context.driver.find_element(By.ID, "input-email").send_keys("superadmin@gmail.com")
     context.driver.find_element(By.ID, "input-password").send_keys("superadmin@123")
@@ -140,7 +140,7 @@ def step_impl(context):
             print("none")
 
     assert dp_value>=daily_value_int
-    context.driver.quit()
+    # context.driver.quit()
 
 
 
@@ -176,7 +176,7 @@ def step_impl(context):
         api_plant_name.append(plant_name.strip())
 
     assert ui_element_plant==api_plant_name
-    context.driver.quit()
+    # context.driver.quit()
 
 
 @given(u'the API endpoint for power normalization values is "{url}"')
@@ -217,7 +217,7 @@ def step_impl(context):
                 print(api_user_names)
 
     assert ui_normalization_values==api_user_names
-    context.driver.quit()
+    # context.driver.quit()
 
 
 

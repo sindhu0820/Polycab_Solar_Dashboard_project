@@ -8,9 +8,9 @@ import time
 
 @given(u'Navigate to login page')
 def step_impl(context):
-    context.driver = webdriver.Firefox()
-    context.driver.maximize_window()
-    context.driver.get("http://solar.silvan.co.in/polycabsolar/#/auth-user/login")
+    # context.driver = webdriver.Firefox()
+    # context.driver.maximize_window()
+    # context.driver.get("http://solar.silvan.co.in/polycabsolar/#/auth-user/login")
     context.driver.find_element(By.XPATH, "//div[text()='Admin']").click()
     time.sleep(3)
 
@@ -29,7 +29,7 @@ def step_impl(context):
     expected_output="Solar Monitoring Dashboard"
     assert context.driver.find_element(By.ID,"dhead").text.__eq__(expected_output)
     time.sleep(3)
-    context.driver.quit()
+    # context.driver.quit()
 
 @when(u'If i select light')
 def step_impl(context):
@@ -47,7 +47,7 @@ def step_impl(context):
 
     # Assert the color matches expected
     assert bd_color == expected_color, f"Expected {expected_color}, but got {bd_color}"
-    context.driver.quit()
+    # context.driver.quit()
 
 
 @when(u'If i select dark')
@@ -66,7 +66,7 @@ def step_impl(context):
 
     # Assert the color matches expected
     assert bd_color == expected_color, f"Expected {expected_color}, but got {bd_color}"
-    context.driver.quit()
+    # context.driver.quit()
 
 @when(u'If i click on setting icon')
 def step_impl(context):
@@ -90,7 +90,7 @@ def step_impl(context):
         actual_result=context.driver.find_element(By.XPATH,xpath).text
         assert value==actual_result
 
-    context.driver.quit()
+    # context.driver.quit()
 
 @then(u'Production Overview, Device Status, Historical Production, Peak Hour Rankings, Overall Planned Production and Power Normalization Rankings should exist.')
 def step_impl(context):
@@ -110,7 +110,7 @@ def step_impl(context):
             print(values)
             assert values==actual_result_value
 
-    context.driver.quit()
+    # context.driver.quit()
 
 
 @then(u'Daily, Monthly, Yearly and total production and Total Plants Capacity should be visible')
@@ -127,7 +127,7 @@ def step_impl(context):
         actual_result = context.driver.find_element(By.XPATH, xpath).text
         assert value == actual_result
 
-    context.driver.quit()
+    # context.driver.quit()
 
 @then(u'Total, Online, Offline and Incomplete Inverters should be visible')
 def step_impl(context):
@@ -142,7 +142,7 @@ def step_impl(context):
         actual_result = context.driver.find_element(By.XPATH, xpath).text
         assert value == actual_result
 
-    context.driver.quit()
+    # context.driver.quit()
 
 @then(u'By adding the Online, Offline and Incomplete Inverters should be equal to Total Inverters')
 def step_impl(context):
@@ -154,7 +154,7 @@ def step_impl(context):
       sum_inverters=int(online_inverters)+int(offline_inverters)+int(incomplete_inverters)
 
       assert int(total_inverters)==sum_inverters
-      context.driver.quit()
+      # context.driver.quit()
 
 @when(u'Click on Year option')
 def step_impl(context):
@@ -165,7 +165,7 @@ def step_impl(context):
 def step_impl(context):
     expected_years = ["2020", "2021", "2022", "2023", "2024", "2025"]
 
-    wait = WebDriverWait(context.driver, 25)
+    wait = WebDriverWait(context.driver, 35)
     year_elements = wait.until(EC.presence_of_all_elements_located(
         (By.XPATH, "//div[contains(@class,'year-tile') and contains(@class,'ng-star-inserted')]")
     ))
@@ -175,4 +175,4 @@ def step_impl(context):
 
     for year in expected_years:
         assert year in actual_years, f"Year {year} not found in visible tiles"
-        context.driver.quit()
+        # context.driver.quit()
