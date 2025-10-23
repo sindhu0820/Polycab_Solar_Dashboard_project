@@ -45,9 +45,15 @@ Feature:HomePage
      When  I login to solar app
      Then Total, Online, Offline and Incomplete Inverters should be visible
 
-   @home-Total
+   @home
    Scenario: Verifying the Total Inverters
      Given Navigate to login page
      When  I login to solar app
      Then By adding the Online, Offline and Incomplete Inverters should be equal to Total Inverters
 
+   @home-year
+   Scenario: Verifying the select year
+     Given Navigate to login page
+     When  I login to solar app
+     And Click on Year option
+     Then 2020,2021,2022,2023,2024 and 2025 should be visible

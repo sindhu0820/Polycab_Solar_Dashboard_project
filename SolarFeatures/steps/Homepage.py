@@ -155,3 +155,23 @@ def step_impl(context):
 
       assert int(total_inverters)==sum_inverters
       context.driver.quit()
+
+@when(u'Click on Year option')
+def step_impl(context):
+    context.driver.find_element(By.XPATH,"//div[@class='month_year']").click()
+
+
+@then(u'2020,2021,2022,2023,2024 and 2025 should be visible')
+def step_impl(context):
+    expected_years = ["2020", "2021", "2022", "2023", "2024", "2025"]
+
+    wait = WebDriverWait(context.driver, 25)
+    year_elements = wait.until(EC.presence_of_all_elements_located(
+        (By.XPATH, "//div[contains(@class,'year-tile') and contains(@class,'ng-star-inserted')]")
+    ))
+
+    actual_years = [element.text for element in year_elements]
+    print("Visible years:", actual_years)
+
+    for year in expected_years:
+        assert year in actual_years, f"Year {year} not found in visible tiles"
