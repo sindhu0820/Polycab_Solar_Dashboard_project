@@ -57,3 +57,11 @@ Feature:HomePage
      When  I login to solar app
      And Click on Year option
      Then 2020,2021,2022,2023,2024 and 2025 should be visible
+
+   @home
+   Scenario: Verifying the current date
+     Given Navigate to login page
+     When  I login to solar app
+     Then Current date should be visible on the home page
+
+

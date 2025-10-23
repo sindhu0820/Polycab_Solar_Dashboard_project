@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
-
+from datetime import datetime
 
 @given(u'Navigate to login page')
 def step_impl(context):
@@ -176,3 +176,13 @@ def step_impl(context):
     for year in expected_years:
         assert year in actual_years, f"Year {year} not found in visible tiles"
         # context.driver.quit()
+
+@then(u'Current date should be visible on the home page')
+def step_impl(context):
+    current_date=datetime.now().strftime("%Y/%m/%d")
+    wait=WebDriverWait(context.driver,25)
+    dashboard_time=wait.until(EC.visibility_of_element_located((By.XPATH,"//div[@class='col-6']/span"))).text.split("：")[1].split(" ")[0]
+    print(dashboard_time)
+    print(current_date)
+    assert current_date==dashboard_time
+
