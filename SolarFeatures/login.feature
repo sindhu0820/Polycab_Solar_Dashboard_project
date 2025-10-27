@@ -30,7 +30,7 @@ Feature: login functionality
     And I click on login button
     Then I should not be logged in and should get proper warning message
 
-  @login_without
+  @login
   Scenario: Login without entering any credentials
     Given I have navigted to login page
     When I have not entered email and password

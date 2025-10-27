@@ -17,6 +17,7 @@ import requests
 
 logging.basicConfig(level=logging.INFO)
 logging.info("✅ Logging works too!")
+
 @given(u'I login to solar app')
 def step_impl(context):
     # context.driver = webdriver.Firefox()

@@ -27,7 +27,7 @@ Scenario: Verifying the Peak Hour Rankings
     And  the response should contain a "data"
     And peak hour rankings should be displayed
 
-@api-range
+@api
 Scenario: Verifying the Power Normalization Rankings for top 10
   Given I login to solar app
     And the API endpoint for power normalization values is "http://solar.silvan.co.in:7880/solarM/powerNormalization?emailid=superadmin@gmail.com&secret=1000a433b534721421b7ad3e9460b728"

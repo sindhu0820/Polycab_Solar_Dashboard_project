@@ -158,17 +158,21 @@ def step_impl(context):
 
 @when(u'Click on Year option')
 def step_impl(context):
-    context.driver.find_element(By.XPATH,"//div[@class='month_year']").click()
+    wait=WebDriverWait(context.driver, 30)
+    wait.until(EC.visibility_of_element_located((By.XPATH,"//div[@class='month_year']"))).click()
+    # context.driver.find_element(By.XPATH,"//div[@class='month_year']").click()
 
 
 @then(u'2020,2021,2022,2023,2024 and 2025 should be visible')
 def step_impl(context):
     expected_years = ["2020", "2021", "2022", "2023", "2024", "2025"]
 
-    wait = WebDriverWait(context.driver, 35)
+
+    wait = WebDriverWait(context.driver, 45)
     year_elements = wait.until(EC.presence_of_all_elements_located(
         (By.XPATH, "//div[contains(@class,'year-tile') and contains(@class,'ng-star-inserted')]")
     ))
+    print(context.driver.page_source)
 
     actual_years = [element.text for element in year_elements]
     print("Visible years:", actual_years)
